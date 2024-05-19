@@ -1,0 +1,29 @@
+class Solution {
+public:
+      
+        
+      
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        //storing the string based on key
+        unordered_map<string,vector<string>>group;
+        for(int i=0;i<strs.size();i++){
+            string key=strs[i];
+            //generating key of the current word
+            sort(key.begin(),key.end());
+            //seeing if the key exits or not
+            if(group.find(key)==group.end()){
+                group[key]={strs[i]};
+            }
+            //if key exits push the word
+            else{
+                group[key].push_back(strs[i]);
+            }
+        }
+        vector<vector<string>>res;
+        for(auto i:group){
+            //pushing the groups from the map
+            res.push_back(i.second);
+        }
+        return res;
+    }
+};
