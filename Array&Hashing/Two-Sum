@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        //use a map
+      map<int,int>mp;
+        for(int i=0;i<nums.size();i++){
+            //calculate required number
+            int flag=target-nums[i];
+            if(mp[flag]){//if number exits in map return that index and the element index
+                return {mp[flag]-1,i};
+            }
+            //store the index of the current number of with i+1
+            mp[nums[i]]=i+1;
+        }
+        return {-1,-1};
+          
+    }
+};
